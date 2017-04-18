@@ -1,7 +1,5 @@
 #!/usr/bin/env bash
 
-exit 0
-
 # Install dependencies
 apt-get update -qq
 apt-get install -qq -y python2.7 snapcraft
