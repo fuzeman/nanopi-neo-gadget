@@ -4,8 +4,8 @@ services:
 - docker
 script:
 - docker run -v $(pwd):$(pwd) -t ubuntu:yakkety sh -c "cd $(pwd) && .travis/build.sh armhf"
-#before_deploy:
-#- .travis/decrypt.sh
+before_deploy:
+- .travis/decrypt.sh
 deploy:
 - provider: releases
   skip_cleanup: true
