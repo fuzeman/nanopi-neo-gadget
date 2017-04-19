@@ -9,8 +9,8 @@ script:
  - docker run -v $(pwd):$(pwd) -t ubuntu:yakkety sh -c "cd $(pwd) && .travis/build.sh armhf"
 
 # Decrypt snapcraft credentials
-after_success:
- - .travis/decrypt.sh
+#after_success:
+# - .travis/decrypt.sh
 
 # Snap deployment
 deploy:
@@ -24,20 +24,20 @@ deploy:
      repo: fuzeman/nanopi-neo-gadget
      tags: true
 
- # Snapcraft: Master branch (edge)
- - provider: script
-   skip_cleanup: true
-   script:
-    - docker run -v $(pwd):$(pwd) -t ubuntu:yakkety sh -c "cd $(pwd) && .travis/push.sh"
-   on:
-    repo: fuzeman/nanopi-neo-gadget
-    branch: master
-
- # Snapcraft: Tagged releases (channel detected)
- - provider: script
-   skip_cleanup: true
-   script:
-    - docker run -v $(pwd):$(pwd) -t ubuntu:yakkety sh -c "cd $(pwd) && .travis/push.sh $TRAVIS_TAG"
-   on:
-    repo: fuzeman/nanopi-neo-gadget
-    tags: true
+# # Snapcraft: Master branch (edge)
+# - provider: script
+#   skip_cleanup: true
+#   script:
+#    - docker run -v $(pwd):$(pwd) -t ubuntu:yakkety sh -c "cd $(pwd) && .travis/push.sh"
+#   on:
+#    repo: fuzeman/nanopi-neo-gadget
+#    branch: master
+#
+# # Snapcraft: Tagged releases (channel detected)
+# - provider: script
+#   skip_cleanup: true
+#   script:
+#    - docker run -v $(pwd):$(pwd) -t ubuntu:yakkety sh -c "cd $(pwd) && .travis/push.sh $TRAVIS_TAG"
+#   on:
+#    repo: fuzeman/nanopi-neo-gadget
+#    tags: true
