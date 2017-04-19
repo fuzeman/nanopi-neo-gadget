@@ -16,6 +16,13 @@ deploy:
   on:
     repo: fuzeman/nanopi-neo-gadget
     tags: true
+- provider: script
+  skip_cleanup: true
+  script:
+  - docker run -v $(pwd):$(pwd) -t ubuntu:yakkety sh -c "cd $(pwd) && .travis/push.sh $TRAVIS_TAG"
+  on:
+    repo: fuzeman/nanopi-neo-gadget
+    tags: true
 #- provider: script
 #  skip_cleanup: true
 #  script:
@@ -23,10 +30,3 @@ deploy:
 #  on:
 #    repo: fuzeman/nanopi-neo-gadget
 #    branch: master
-#- provider: script
-#  skip_cleanup: true
-#  script:
-#  - docker run -v $(pwd):$(pwd) -t ubuntu:yakkety sh -c "cd $(pwd) && .travis/push.sh $TRAVIS_TAG"
-#  on:
-#    repo: fuzeman/nanopi-neo-gadget
-#    tags: true
